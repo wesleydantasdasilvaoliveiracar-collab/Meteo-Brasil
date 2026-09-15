@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meteo BR - Radar</title>
+    <!-- LINK CORRIGIDO: Caminho completo para o CSS do Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com" />
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body, html { height: 100vh; width: 100vw; overflow: hidden; font-family: sans-serif; }
+        header { background: #1a252f; color: white; padding: 15px; text-align: center; font-weight: bold; font-size: 1.2rem; }
+        #map { height: calc(100vh - 50px); width: 100vw; background: #222; }
+    </style>
+</head>
+<body>
+    <header>📡 METEO BR - RADAR AO VIVO</header>
+    <div id="map"></div>
+
+    <!-- SCRIPT CORRIGIDO: Caminho completo para o JavaScript do Leaflet -->
+    <script src="https://unpkg.com"></script>
+    <script>
+        // Inicializa o mapa centralizado no Brasil
+        var map = L.map('map').setView([-14.235, -51.925], 4);
+        
+        // Camada base do mapa (Dark Mode)
+        L.tileLayer('https://{s}://{z}/{x}/{y}{r}.png').addTo(map);
+        
+        // Camada do Radar de Chuva (OpenWeatherMap)
+        L.tileLayer('https://openweathermap.org{z}/{x}/{y}.png?appid=2570081d59306b9bda27f9cbdf2e8055', { opacity: 0.6 }).addTo(map);
+    </script>
+</body>
+</html>
